@@ -3,9 +3,10 @@
     --secondary-color: #6ba3c3;
     --accent-color: #ff6b6b;
     --dark-color: #2c3e50;
+    --darkest-color: #1a252f;
     --light-color: #ecf0f1;
-    --text-color: #333;
-    --text-light: #7f8c8d;
+    --text-color: #f0f0f0;
+    --text-light: #a0a0a0;
     --transition-speed: 0.3s;
 }
 
@@ -71,7 +72,7 @@ p {
 }
 
 .site-header {
-    background-color: var(--dark-color);
+    background-color: var(--darkest-color);
     color: white;
     padding: 1.5rem 0;
     position: sticky;
@@ -103,7 +104,7 @@ p {
 
 .hero-section {
     padding: 5rem 0;
-    background-color: white;
+    background-color: #1a252f;
 }
 
 .hero-content {
@@ -121,7 +122,7 @@ p {
     max-width: 100%;
     height: auto;
     border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
     transition: transform var(--transition-speed) ease;
 }
 
@@ -131,6 +132,7 @@ p {
 
 .mission-section, .tech-section, .projects-section, .contact-section {
     padding: 5rem 0;
+    background-color: #f5f5f7;
 }
 
 .mission-content, .tech-content {
@@ -140,12 +142,13 @@ p {
 }
 
 .mission-card, .tech-card, .project-card {
-    background-color: var(--dark-color);
+    background-color: var(--darkest-color);
     color: white;
     padding: 2rem;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     transition: transform var(--transition-speed) ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .mission-card:hover, .tech-card:hover, .project-card:hover {
@@ -164,6 +167,7 @@ p {
     object-fit: cover;
     border-radius: 5px;
     margin-top: 1rem;
+    background-color: var(--darkest-color);
 }
 
 .contact-form {
@@ -179,15 +183,16 @@ p {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 500;
+    color: var(--text-color);
 }
 
 .form-group input,
 .form-group textarea {
     width: 100%;
     padding: 0.8rem;
-    border: 1px solid #4a90e2;
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 5px;
-    background-color: var(--dark-color);
+    background-color: var(--darkest-color);
     color: white;
     font-family: inherit;
 }
@@ -198,7 +203,7 @@ p {
 }
 
 .site-footer {
-    background-color: var(--dark-color);
+    background-color: var(--darkest-color);
     color: white;
     text-align: center;
     padding: 2rem 0;
