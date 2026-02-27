@@ -140,10 +140,11 @@ p {
 }
 
 .mission-card, .tech-card, .project-card {
-    background-color: white;
+    background-color: var(--dark-color);
+    color: white;
     padding: 2rem;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     transition: transform var(--transition-speed) ease;
 }
 
@@ -184,8 +185,10 @@ p {
 .form-group textarea {
     width: 100%;
     padding: 0.8rem;
-    border: 1px solid #ddd;
+    border: 1px solid #4a90e2;
     border-radius: 5px;
+    background-color: var(--dark-color);
+    color: white;
     font-family: inherit;
 }
 
