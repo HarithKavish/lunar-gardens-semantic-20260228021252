@@ -1,21 +1,17 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
+        anchor.addEventListener('click', function(e) {
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
 
-                // Update active nav link
-                const navLinks = document.querySelectorAll('.main-nav ul li a');
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
                 });
-                this.classList.add('active');
             }
         });
     });
@@ -25,51 +21,73 @@ document.addEventListener('DOMContentLoaded', function() {
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                message: document.getElementById('message').value
+            };
+
+            // In a real implementation, you would send this data to a server
             alert('Thank you for your message! We will get back to you soon.');
             this.reset();
         });
     }
 
-    // Add dark card backgrounds
-    const cards = document.querySelectorAll('.mission-card, .tech-card, .project-card');
-    cards.forEach(card => {
-        card.style.backgroundColor = '#1a1a2e';
-        card.style.boxShadow = '0 15px 30px rgba(74, 144, 226, 0.3)';
-        card.style.transition = 'background-color 0.3s ease';
-    });
+    // Card hover animations
+    const exploreCards = document.querySelectorAll('.explore-card');
+    const projectCards = document.querySelectorAll('.project-card');
 
-    // Add hover effects for cards
-    cards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#16213e';
+    exploreCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-5px)';
+            card.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.1)';
         });
 
-        card.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = '#1a1a2e';
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0)';
+            card.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.05)';
         });
     });
 
-    // Animate cards on scroll
-    const animateOnScroll = () => {
-        const cards = document.querySelectorAll('.animated-card');
-        cards.forEach(card => {
-            const cardTop = card.getBoundingClientRect().top;
-            const windowHeight = window.innerHeight;
-            if (cardTop < windowHeight - 100) {
-                card.style.opacity = '1';
-                card.style.transform = 'translateY(0)';
+    projectCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-5px)';
+            card.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.1)';
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0)';
+            card.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.05)';
+        });
+    });
+
+    // Image hover effect
+    const heroImage = document.querySelector('.hero-image img');
+    if (heroImage) {
+        heroImage.addEventListener('mouseenter', () => {
+            heroImage.style.transform = 'scale(1.05)';
+        });
+
+        heroImage.addEventListener('mouseleave', () => {
+            heroImage.style.transform = 'scale(1)';
+        });
+    }
+
+    // Add animation to sections as they come into view
+    const sections = document.querySelectorAll('.section-title');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
             }
         });
-    };
+    }, { threshold: 0.1 });
 
-    // Initialize animation
-    document.addEventListener('DOMContentLoaded', animateOnScroll);
-
-    // Run animation on scroll
-    window.addEventListener('scroll', animateOnScroll);
-
-    // Add animation classes to cards
-    cards.forEach(card => {
-        card.classList.add('animated-card');
+    sections.forEach(section => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(20px)';
+        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(section);
     });
 });
