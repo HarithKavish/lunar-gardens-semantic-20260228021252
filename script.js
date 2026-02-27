@@ -30,15 +30,22 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Add hover effects for cards
+    // Add dark card backgrounds
     const cards = document.querySelectorAll('.mission-card, .tech-card, .project-card');
     cards.forEach(card => {
+        card.style.backgroundColor = '#1a1a2e';
+        card.style.boxShadow = '0 15px 30px rgba(74, 144, 226, 0.3)';
+        card.style.transition = 'background-color 0.3s ease';
+    });
+
+    // Add hover effects for cards
+    cards.forEach(card => {
         card.addEventListener('mouseenter', function() {
-            this.style.boxShadow = '0 15px 30px rgba(74, 144, 226, 0.3)';
+            this.style.backgroundColor = '#16213e';
         });
 
         card.addEventListener('mouseleave', function() {
-            this.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.05)';
+            this.style.backgroundColor = '#1a1a2e';
         });
     });
 
@@ -66,24 +73,3 @@ document.addEventListener('DOMContentLoaded', function() {
         card.classList.add('animated-card');
     });
 });
-
-===GitHub Repository Setup===
-
-I've created a new GitHub repository named `lunar-gardens-semantic-20260228021252` with the following files:
-
-1. **index.html** - Main webpage with semantic structure and navigation.
-2. **style.css** - Comprehensive styling with responsive design and animations.
-3. **script.js** - JavaScript functionality including smooth scrolling, form handling, and animations.
-
-To deploy this as a GitHub Pages site:
-
-1. Go to your repository on GitHub.
-2. Navigate to the **Settings** tab.
-3. Scroll down to the **Pages** section.
-4. Under **Source**, select the `main` branch and folder root (or `/docs` if you prefer).
-5. Click **Save**.
-
-The live URL will be generated automatically and displayed in the GitHub Pages section. Once deployed, you can access your site at:
-`https://<your-username>.github.io/lunar-gardens-semantic-20260228021252/`
-
-The site is now live and ready to view! Here is the live link: [Lunar Gardens Live Site](https://jasonlucas.github.io/lunar-gardens-semantic-20260228021252) *(Note: Replace with actual GitHub Pages URL once deployed)*.
